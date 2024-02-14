@@ -144,7 +144,7 @@ class GeneticAlgorithms(object):
 			# Itera per il numero specificato di cromosomi da selezionare.
 			for _ in range(num_selected):
 				# Usa la funzione roulette per selezionare un cromosoma dalla popolazione corrente.
-				survivors.append(roulette([c for c in self.population if c not in survivors]))
+				survivors.append(roulette([c for c in self.Popolazione if c not in survivors]))
 			return survivors
 
 		raise ValueError('SelectionMethod %s not implemented' % method)
@@ -153,8 +153,8 @@ class GeneticAlgorithms(object):
 		def random_attributes():
 			heuristics = {}
 			# Per ogni funzione euristica, scegli casualmente da quale genitore prendere il valore.
-			for fun, _ in c1.euristica.items():
-				heuristics[fun] = random.choice((c1, c2)).euristica[fun]
+			for fun, _ in c1.euristiche.items():
+				heuristics[fun] = random.choice((c1, c2)).euristiche[fun]
 			return Individuo(heuristics)
 
 		def average_attributes():
@@ -170,12 +170,12 @@ class GeneticAlgorithms(object):
 			return average_attributes()
 		raise ValueError('CrossoverMethod %s not implemented' % method)
 
-	def mutation(self, chromosome, mutation_rate):
+	def mutation(self, individuo, mutation_rate):
 		# Applica la mutazione con una certa probabilità per ciascuna funzione euristica del cromosoma.
 		if randint(0, int(mutation_rate)) == 0:
-			h = chromosome.euristica
+			h = individuo.euristiche
 			h[random.choice(list(h.keys()))] = randrange(-1000, 1000)
-			print(chromosome.name, "MUTATED")
+			print(individuo.name, "Mutato")
 
 	def random_individuo(self):
 		# Genera un cromosoma casuale con valori casuali per ogni funzione euristica.

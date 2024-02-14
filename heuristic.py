@@ -39,14 +39,13 @@ def num_blocks_above_holes(board):
 def num_gaps(board):
 
 	gaps = []
-	sequence = 0 # 0 = no progress, 1 = found block, 2 = found block-gap, 3 = found block-gap-block (not used)
+	sequence = 0
 	board_copy = []
 
-	# Make walls into blocks for simplicity
+
 	for y in range(len(board)):
 		board_copy.append([1] + board[y] + [1])
 
-	# Detect gaps
 	for y in range(len(board_copy)):
 		for x in range(len(board_copy[0])):
 			if sequence == 0 and _is_block(board_copy[y][x]):
