@@ -234,7 +234,7 @@ class TetrisApp(object):
 					if self.ai and self.runner:
 						from heuristic import num_holes, num_blocks_above_holes, num_gaps, max_height, avg_height, num_blocks
 						chromosome = self.runner.Popolazione[self.runner.current_individuo]
-						self.disp_msg("Discontentment: %d" % -self.ai.utility(self.board), (self.rlim+CELL_SIZE, CELL_SIZE*10))
+						
 						self.disp_msg("Generation: %s" % self.runner.current_generazione, (self.rlim+CELL_SIZE, CELL_SIZE*11))
 						self.disp_msg("Chromosome: %d" % chromosome.name, (self.rlim+CELL_SIZE, CELL_SIZE*12))
 						self.disp_msg("\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s" % (
